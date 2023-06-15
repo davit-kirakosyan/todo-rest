@@ -7,6 +7,8 @@ import com.example.todo.dto.todoDto.TodoDto;
 import com.example.todo.entity.ToDo;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface TodoMapper {
 
@@ -16,6 +18,8 @@ public interface TodoMapper {
     TodoDto mapToDto(ToDo entity);
 
     CreateTodoResponseDto map(ToDo entity);
+
+    List<CreateTodoResponseDto> mapToDtoList(List<ToDo> todoDtoList);
 
 
 }

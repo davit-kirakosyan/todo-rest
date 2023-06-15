@@ -42,6 +42,7 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.POST,"/categories/add").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST,"/todos/add").permitAll()
                 .requestMatchers(HttpMethod.GET,"/todos").permitAll()
+                .requestMatchers(HttpMethod.GET,"/todos/**").permitAll()
 //                .requestMatchers("/categories/**").permitAll()
 //                .requestMatchers("/todos/add").permitAll()
                 .anyRequest().authenticated();
