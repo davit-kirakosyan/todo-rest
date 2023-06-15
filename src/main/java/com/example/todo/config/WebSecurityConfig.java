@@ -37,14 +37,12 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/user/auth").permitAll()
                 .requestMatchers(HttpMethod.POST, "/user/register").permitAll()
                 .requestMatchers("/user/**").permitAll()
-                .requestMatchers( HttpMethod.DELETE,"/user/delete/{id}").hasRole("ADMIN")
+                .requestMatchers( HttpMethod.DELETE,"/user/delete/**").hasRole("ADMIN")
                 .requestMatchers("/categories/**").permitAll()
-                .requestMatchers(HttpMethod.POST,"/categories/add").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST,"/categories/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST,"/todos/add").permitAll()
                 .requestMatchers(HttpMethod.GET,"/todos").permitAll()
                 .requestMatchers(HttpMethod.GET,"/todos/**").permitAll()
-//                .requestMatchers("/categories/**").permitAll()
-//                .requestMatchers("/todos/add").permitAll()
                 .anyRequest().authenticated();
 
         httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

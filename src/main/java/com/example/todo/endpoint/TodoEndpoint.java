@@ -35,13 +35,13 @@ public class TodoEndpoint {
     }
 
 
-    @GetMapping("/status")
+    @GetMapping("/byStatus")
     public ResponseEntity<List<CreateTodoResponseDto>> getStatus(@RequestParam("status") Status status,
                                                                  @AuthenticationPrincipal CurrentUser currentUser) {
         return todoService.getTodoStatus(status, currentUser);
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/byCategory")
     public ResponseEntity<List<CreateTodoResponseDto>> getStatus(@RequestParam("category") Category category,
                                                                  @AuthenticationPrincipal CurrentUser currentUser) {
         return todoService.getTodoCategory(category, currentUser);
