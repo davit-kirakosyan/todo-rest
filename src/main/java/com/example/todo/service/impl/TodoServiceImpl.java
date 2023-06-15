@@ -50,4 +50,18 @@ public class TodoServiceImpl implements TodoService {
         }
         return ResponseEntity.ok(todoDtos);
     }
+
+    @Override
+    public ResponseEntity<?> deleteById(int id, CurrentUser currentUser) {
+        Optional<ToDo> byId = todoRepository.findById(id);
+        if (byId.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        if (byId.get().getUser().getId() == currentUser.getUser().getId()) {
+            todoRepository.deleteById(id);
+            return ResponseEntity.notFound().build();
+
+        }
+        return ResponseEntity.noContent().build();
+    }
 }

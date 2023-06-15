@@ -13,4 +13,6 @@ public interface TodoService {
     ResponseEntity<CreateTodoResponseDto> createTodo(CreateTodoRequestDto createTodoRequestDto, CurrentUser currentUser);
 
     ResponseEntity<List<TodoDto>> getTodoUser(CurrentUser currentUser);
+
+    ResponseEntity<?> deleteById(int id, CurrentUser currentUser);
 }

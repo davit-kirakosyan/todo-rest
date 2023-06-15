@@ -30,4 +30,10 @@ public class TodoEndpoint {
     public ResponseEntity<List<TodoDto>> getToDo(@AuthenticationPrincipal CurrentUser currentUser) {
         return todoService.getTodoUser(currentUser);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@AuthenticationPrincipal CurrentUser currentUser,
+                                        @PathVariable("id") int id) {
+        return todoService.deleteById(id, currentUser);
+    }
 }
